@@ -1,0 +1,31 @@
+# Ignorar archivos generados por Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Ignorar archivos de resultados generados por Jupyter
+*.html
+*.pdf
+
+# Ignorar archivos de datos grandes (por ejemplo, conjuntos de datos grandes)
+data/
+
+# Ignorar archivos de entorno virtual (dependiendo de tu configuración)
+venv/
+env/
+__pycache__/
+
+# Ignorar archivos de caché y registros
+.cache/
+logs/
+
+# Ignorar archivos de configuración local (por ejemplo, archivos .env)
+*.env
+
+# Ignorar archivos generados por otros sistemas o IDE
+.vscode/
+.idea/
+*.pyc
+
+# Ignorar archivos de dependencias (por ejemplo, para proyectos con administrador de paquetes)
+node_modules/
+__pycache__/
