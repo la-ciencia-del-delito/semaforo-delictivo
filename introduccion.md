@@ -15,20 +15,20 @@ Los delitos abordados en el semáforo son los siguientes:
 - Feminicidio.
 
 La significación de los colores en el semáforo delictivo gira básicamente en torno al parámetro de la media para cada delito ya sea a nivel de entidad federativa o país.
-Los valores que se encuentran por encima de la media se representan con el <font color='red'>Rojo</font>, los valores entre la meta y la media en <span style="color:yellow">Amarillo</span> y los valores por debajo de la meta se representan en <span style="color:green">Verde</span>.
+Los valores que se encuentran por encima de la media se representan con el ${\color{red}Rojo}$, los valores entre la meta y la media en ${\color{yellow}Amarillo}$ y los valores por debajo de la meta se representan en ${\color{green}Verde}$.
 
-<font color='red'>Rojo</font>
+${\color{red}Rojo}$
 
 * Fuera de control = Media + (Media / 2).
 
-<font color='red'>Rojo</font>
+${\color{red}Rojo}$
 
 * Media
 
-<span style="color:yellow">Amarillo</span>
+${\color{yellow}Amarillo}$
 
 * Meta = Media - (Media / 2).
 
-<span style="color:green">Verde</span>
+${\color{green}Verde}$
 
 Notándose lo que pudiera interpretarse como una limitación, a la dificultad de no poder representar gráficamente el concepto propuesto en dicho proyecto para identificar cuando los delitos se encuentran fuera de control. Presuntivamente para no usar otros colores que rompan la armonía del diseño, o quizás no sobre alarmar.
