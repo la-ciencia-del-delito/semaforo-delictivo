@@ -70,7 +70,7 @@ Luego se realizará la suma del producto de la tasa de incidencia del delito con
 
 $IIC = TI_1 * 0.6 + TI_2 * 0.24 + TI_3 * 0.1 + TI_4 * 0.13 + TI_5 * 0.13 + TI_6 * 0.13 + TI_7 * 0.13 + TI_8 * 0.08 + TI_9 * 0.08 + TI_10 * 0.04 + TI_11 * 0.02.$
 
-Unidad de medida del IIC: Años de sanción máxima por cada 1000 habitantes.
+Unidad de medida del IIC: años de sanción máxima por cada 1000 habitantes.
 
 Para explicar la unidad de medida basta recordar que los pesos o índices asignados a cada delito se basa en la cifra máxima en años de sanción al delito base, sin incluir los agravantes, y luego esta cifra se divide por 100.
 Ejemplo: en el Feminicidio, la sanción máxima resulta ser de 60 años, entonces el índice de este delito en el KPI sería de 0.6.
