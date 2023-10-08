@@ -68,7 +68,7 @@ No.   |  Orden                 |  Mínimo |  Máximo
 
 Luego se realizará la suma del producto de la tasa de incidencia del delito con el peso asignado al mismo según el límite máximo de la sanción, quedando de la siguiente forma:
 
-$IIC = TI_1 * 0.6 + TI_2 * 0.24 + TI_3 * 0.1 + TI_4 * 0.13 + TI_5 * 0.13 + TI_6 * 0.13 + TI_7 * 0.13 + TI_8 * 0.08 + TI_9 * 0.08 + TI_10 * 0.04 + TI_11 * 0.02.$
+$IIC = TI_1 * 0.6 + TI_2 * 0.24 + TI_3 * 0.1 + TI_4 * 0.13 + TI_5 * 0.13 + TI_6 * 0.13 + TI_7 * 0.13 + TI_8 * 0.08 + TI_9 * 0.08 + TI_{10} * 0.04 + TI_{11} * 0.02.$
 
 Unidad de medida del IIC: años de sanción máxima por cada 1000 habitantes.
 
@@ -84,7 +84,7 @@ $(\frac{cantidad \hspace{2pt} de \hspace{2pt} Feminicidios}{población \hspace{2
 
 Luego:
 
-$\frac{100 \hspace{2pt} 000 \hspace{2pt} habitantes}{100}= 1000 habitantes$
+$\frac{100 \hspace{2pt} 000 \hspace{2pt} habitantes}{100}= 1000 \hspace{2pt} habitantes$
 
 Quedando entonces la unidad de medida fijada en: años de sanción  máxima por cada 1000 habitantes.
 
