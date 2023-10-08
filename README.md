@@ -80,11 +80,11 @@ $TI_1 * 0.6$
 
 Desglosando:
 
-$(\frac{cantidad_de_Feminicidios}{población_total} * 100 000 habitantes) * (\frac{años de sanción máxima del Feminicidio según código penal}{100})$
+$(\frac{cantidad \hspace{2pt} de \hspace{2pt} Feminicidios}{población \hspace{2pt} total} * 100 \hspace{2pt} 000 habitantes) * (\frac{años \hspace{2pt} de \hspace{2pt} sanción \hspace{2pt} máxima \hspace{2pt} del \hspace{2pt} Feminicidio \hspace{2pt} según \hspace{2pt} código \hspace{2pt} penal}{100})$
 
 Luego:
 
-$\frac{100 000 habitantes}{100}= 1000 habitantes$
+$\frac{100 \hspace{2pt} 000 \hspace{2pt} habitantes}{100}= 1000 habitantes$
 
 Quedando entonces la unidad de medida fijada en: años de sanción  máxima por cada 1000 habitantes.
 
