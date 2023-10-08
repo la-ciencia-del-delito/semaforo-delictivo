@@ -80,7 +80,7 @@ $TI_1 * 0.6$
 
 Desglosando:
 
-$(\frac{cantidad de Feminicidios}{población total} * 100 000 habitantes) * (\frac{años de sanción máxima del Feminicidio según código penal}{100})$
+$(\frac{cantidad_de_Feminicidios}{población_total} * 100 000 habitantes) * (\frac{años de sanción máxima del Feminicidio según código penal}{100})$
 
 Luego:
 
