@@ -70,11 +70,31 @@ Luego se realizará la suma del producto de la tasa de incidencia del delito con
 
 $IIC = TI_1 * 0.6 + TI_2 * 0.24 + TI_3 * 0.1 + TI_4 * 0.13 + TI_5 * 0.13 + TI_6 * 0.13 + TI_7 * 0.13 + TI_8 * 0.08 + TI_9 * 0.08 + TI_10 * 0.04 + TI_11 * 0.02.$
 
-Finalmente se ajustarán los pesos asignados hasta encontrar valores acordes con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/).
+Unidad de medida del IIC: Años de sanción máxima por cada 1000 habitantes.
+
+Para explicar la unidad de medida basta recordar que los pesos o índices asignados a cada delito se basa en la cifra máxima en años de sanción al delito base, sin incluir los agravantes, y luego esta cifra se divide por 100.
+Ejemplo: en el Feminicidio, la sanción máxima resulta ser de 60 años, entonces el índice de este delito en el KPI sería de 0.6.
+Luego, las tasas específicas de cada delito se encuentran calculadas según población por cada 100 000 habitantes, así que viendo de cercca el primer componente del IIC que analizaría el Feminicidio y se calcularía a partir de la multiplicación de la tasa de incidencia de Feminicidio ($TI_1$) por el índice establecido, y sería así según la fórmula:
+
+$TI_1 * 0.6$
+
+Desglosando:
+
+$(\frac{cantidad de Feminicidios}{población total} * 100 000 habitantes) * (\frac{años de sanción máxima del Feminicidio según código penal}{100})$
+
+Luego:
+
+$\frac{100 000 habitantes}{100}= 1000 habitantes$
+
+Quedando entonces la unidad de medida fijada en: años de sanción  máxima por cada 1000 habitantes.
+
+Luego se definirán los rangos o categorías de sus valores en conversaciones posteriores con el usuario al frente del proyecto.
+
+Finalmente se verificarán resultados con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/). Para de esta forma chequear el comportamiento del KPI durante el período de 2015 a 2023.
 
 3. Se propone el uso de un icono nuevo ícono para señalizar los delitos que se encuentran fuera de control.
 
-![Fuera_de_control](Red_Arrow.jpg)
+![Fuera_de_control](./notebooks/Red_Arrow.jpg)
 
 4. Se propone el uso alternativo de los datos de la CONAPO, además de los datos que de la INEGI que ya usa el Semáforo en su versión actual.
 Se identifica como una de las limitaciones del semáforo el hecho de que contempla solo los datos de población censal del año 2020 lo cual pudiera provocar una interpretación menos precisa de la situación delectiva en el país.
