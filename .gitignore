@@ -1,6 +1,6 @@
 # Ignorar archivos generados por Jupyter Notebooks
 .ipynb_checkpoints/
-*.ipynb
+
 
 # Ignorar archivos de resultados generados por Jupyter
 *.html
