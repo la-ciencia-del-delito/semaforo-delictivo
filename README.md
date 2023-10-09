@@ -1,7 +1,7 @@
 # Semáforo Delictivo
 ## Proyecto Semáforo Delictivo de la MCD - Universidad de Sonora. 2023.
 ### Autores:
-* Guillermo Velazquez.
+* Guillermo Velazquez Coronado.
 * Misael González Soria.
 * Viowi Yirmeiah Cabrisas Amuedo.
 
