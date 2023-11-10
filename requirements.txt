@@ -7,3 +7,5 @@ scikit-learn
 gdown
 jupyter
 bs4
+geopandas
+pandas-profiling
