@@ -1,7 +1,7 @@
 # Semáforo Delictivo
-## Proyecto Semáforo Delictivo de la MCD - Universidad de Sonora. 2023.
-### Autores:
-* Guillermo Velazquez Coronado.
+#### Proyecto final para la materia **Ingeniería de características**. A cargo del Dr. Julio Waissman Vilanova.
+#### Autores:
+* Guillermo Velázquez Coronado.
 * Misael González Soria.
 * Viowi Yirmeiah Cabrisas Amuedo.
 
@@ -90,7 +90,7 @@ Quedando entonces la unidad de medida fijada en: años de sanción  máxima por 
 
 Luego se definirán los rangos o categorías de sus valores en conversaciones posteriores con el usuario al frente del proyecto.
 
-Finalmente se verificarán resultados con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/). Para de esta forma chequear el comportamiento del KPI durante el período de 2015 a 2023.
+Finalmente se verificarán resultados con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/). Para de esta forma chequear el comportamiento del KPI durante el período de 2015 a 2023. Y más adelante incluir además el Índice de marginalidad para establecer comparaciones.
 
 3. Se propone el uso de un icono nuevo ícono para señalizar los delitos que se encuentran fuera de control.
 
