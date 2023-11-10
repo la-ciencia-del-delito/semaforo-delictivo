@@ -1,6 +1,8 @@
 # Ignorar archivos generados por Jupyter Notebooks
 .ipynb_checkpoints/
 
+#ignorar nueva carpeta de data
+ETL/data/
 
 # Ignorar archivos de resultados generados por Jupyter
 *.html
