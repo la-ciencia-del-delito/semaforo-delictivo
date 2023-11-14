@@ -9,3 +9,4 @@ jupyter
 bs4
 geopandas
 pandas-profiling
+category_encoders
