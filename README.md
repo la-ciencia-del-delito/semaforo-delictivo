@@ -90,27 +90,37 @@ Quedando entonces la unidad de medida fijada en: años de sanción  máxima por 
 
 Luego se definirán los rangos o categorías de sus valores en conversaciones posteriores con el usuario al frente del proyecto.
 
-Finalmente se verificarán resultados con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/). Para de esta forma chequear el comportamiento del KPI durante el período de 2015 a 2023. Y más adelante incluir además el Índice de marginalidad para establecer comparaciones.
+Finalmente se verificarán resultados con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/). Para de esta forma chequear el comportamiento del KPI durante el período de 2015 a 2023. Y más adelante incluir además el Índice de marginalidad para establecer comparaciones.  
 
+<div><div/> <!-- Sin esto, el texto también se centra -->
 3. Se propone el uso de un icono nuevo ícono para señalizar los delitos que se encuentran fuera de control.
-
-![Fuera_de_control](./assets/Red_Arrow.jpg)
-
+<!-- Cetrar imagen -->
+<img src="./assets/Red_Arrow.jpg" 
+        alt="Picture" 
+        width="" 
+        height="" 
+        style="display: block; margin: 20 auto" />
 4. Se propone el uso alternativo de los datos de la CONAPO, además de los datos que de la INEGI que ya usa el Semáforo en su versión actual.
 Se identifica como una de las limitaciones del semáforo el hecho de que contempla solo los datos de población censal del año 2020 lo cual pudiera provocar una interpretación menos precisa de la situación delectiva en el país.
 Por ejemplo: en el 2020 la población de México era de unos 126 014 024 habitantes y ocurrieron unos 19620 homicidios, para una tasa acumulada del año de 15.6 por cada 100 000 habitantes.
 
-$Tasa = \frac{19 620}{126 014 024} * 100 000 = 15.6$
+$$
+Tasa = \frac{19 620}{126 014 024} * 100 000 = 15.6
+$$
 
 Todo bien hasta acá, pero luego en los años venideros se vuelven a realizar los cálculos con las mismas cifras de población del 2020.
 
 En el año 2021 ocurrieron 19 197 homicidios. Para una tasa de 15.2.
 
-$Tasa = \frac{19 197}{126 014 024} * 100 000 = 15.2$
+$$
+Tasa = \frac{19 197}{126 014 024} * 100 000 = 15.2
+$$
 
 En el año 2022 ocurrieron 17 445 homicidios. Para una tasa de 13.8.
 
-$Tasa = \frac{17 445}{126 014 024} * 100 000 = 13.8$
+$$
+Tasa = \frac{17 445}{126 014 024} * 100 000 = 13.8
+$$
 
 No se entienden dichos cálculos como desasertados, pero quizás utilizando las estimaciones realizadas por la CONAPO, con las cifras de población desde el 1950 hasta 2070, se pueda tener una impresión más precisa de la situación actual de cada delito.
 
