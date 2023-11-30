@@ -94,7 +94,7 @@ Finalmente se verificarán resultados con datos procedentes de otras fuentes, ta
 
 3. Se propone el uso de un icono nuevo ícono para señalizar los delitos que se encuentran fuera de control.
 
-![Fuera_de_control](./notebooks/Red_Arrow.jpg)
+![Fuera_de_control](./assets/Red_Arrow.jpg)
 
 4. Se propone el uso alternativo de los datos de la CONAPO, además de los datos que de la INEGI que ya usa el Semáforo en su versión actual.
 Se identifica como una de las limitaciones del semáforo el hecho de que contempla solo los datos de población censal del año 2020 lo cual pudiera provocar una interpretación menos precisa de la situación delectiva en el país.
@@ -129,4 +129,6 @@ https://drive.google.com/file/d/13TjyJ9RkR49o0eWTFvhNqazeL4maORYp/view
 https://www.inegi.org.mx/temas/percepcion/
 
 ### Libretas de Jupyter
-[URL.](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/notebooks)
+- [ETL](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/ETL)
+- [EDA](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/EDA)
+- [Dashboard](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/dashboard)
