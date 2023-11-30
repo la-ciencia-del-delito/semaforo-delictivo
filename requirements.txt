@@ -4,9 +4,11 @@ matplotlib
 seaborn
 plotly
 scikit-learn
+missingno
 gdown
 jupyter
 bs4
 geopandas
 pandas-profiling
 category_encoders
+ipympl
