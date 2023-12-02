@@ -1,96 +1,98 @@
+import os
+from pathlib import Path
+
 import streamlit as st
 import pandas as pd
-import pydeck as pdk
-from urllib.error import URLError
+import geopandas as gpd
+import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Mapping Demo", page_icon="🌍")
 
-st.markdown("# Mapping Demo")
-st.sidebar.header("Mapping Demo")
+st.set_page_config(page_title="Semáforo Delictivo | Mapa",
+                    page_icon="🌍")
+
+st.markdown("# Mapa del semáforo delictivo")
+st.sidebar.header("Mapas")
 st.write(
-    """This demo shows how to use
-[`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
-to display geospatial data."""
+    """
+## Indicador del semáforo delictivo por estado
+"""
 )
 
+# ===================================================================
+# Cargar datos
+# ===================================================================
+ruta_actual = Path(os.getcwd())
+ruta_data = ruta_actual / "../data"
+ruta_tidy = ruta_data / "tidy"
 
-@st.cache_data
-def from_data_file(filename):
-    url = (
-        "http://raw.githubusercontent.com/streamlit/"
-        "example-data/master/hello/v1/%s" % filename
-    )
-    return pd.read_json(url)
+ruta_semaforo = ruta_tidy / "delitos_semaforo.parquet"
+ruta_poblacion = ruta_tidy / "poblacion.parquet"
+
+gdf = gpd.read_file(ruta_data / 'conjunto_de_datos/areas_geoestadisticas_estatales.shp', 
+                    columns = ["clave_entidad", 'nombre_entidad', 'geometry'])
+
+poblacion = pd.read_parquet(ruta_poblacion)
+semaforo = pd.read_parquet(ruta_poblacion)
+
+st.write(semaforo.sample(5))
+st.write(poblacion.sample(5))
 
 
-try:
-    ALL_LAYERS = {
-        "Bike Rentals": pdk.Layer(
-            "HexagonLayer",
-            data=from_data_file("bike_rental_stats.json"),
-            get_position=["lon", "lat"],
-            radius=200,
-            elevation_scale=4,
-            elevation_range=[0, 1000],
-            extruded=True,
-        ),
-        "Bart Stop Exits": pdk.Layer(
-            "ScatterplotLayer",
-            data=from_data_file("bart_stop_stats.json"),
-            get_position=["lon", "lat"],
-            get_color=[200, 30, 0, 160],
-            get_radius="[exits]",
-            radius_scale=0.05,
-        ),
-        "Bart Stop Names": pdk.Layer(
-            "TextLayer",
-            data=from_data_file("bart_stop_stats.json"),
-            get_position=["lon", "lat"],
-            get_text="name",
-            get_color=[0, 0, 0, 200],
-            get_size=15,
-            get_alignment_baseline="'bottom'",
-        ),
-        "Outbound Flow": pdk.Layer(
-            "ArcLayer",
-            data=from_data_file("bart_path_stats.json"),
-            get_source_position=["lon", "lat"],
-            get_target_position=["lon2", "lat2"],
-            get_source_color=[200, 30, 0, 160],
-            get_target_color=[200, 30, 0, 160],
-            auto_highlight=True,
-            width_scale=0.0001,
-            get_width="outbound",
-            width_min_pixels=3,
-            width_max_pixels=30,
-        ),
-    }
-    st.sidebar.markdown("### Map Layers")
-    selected_layers = [
-        layer
-        for layer_name, layer in ALL_LAYERS.items()
-        if st.sidebar.checkbox(layer_name, True)
-    ]
-    if selected_layers:
-        st.pydeck_chart(
-            pdk.Deck(
-                map_style="mapbox://styles/mapbox/light-v9",
-                initial_view_state={
-                    "latitude": 37.76,
-                    "longitude": -122.4,
-                    "zoom": 11,
-                    "pitch": 50,
-                },
-                layers=selected_layers,
-            )
-        )
-    else:
-        st.error("Please choose at least one layer above.")
-except URLError as e:
-    st.error(
-        """
-        **This demo requires internet access.**
-        Connection error: %s
-    """
-        % e.reason
-    )
+
+poblacion_2 = poblacion.groupby(['AÑO','ENTIDAD'])['POBLACION'].sum().reset_index()
+poblacion_2 = poblacion_2[(poblacion_2['AÑO'] <= 2023) & (poblacion_2['AÑO'] >= 2015)]
+poblacion_2 = poblacion_2[~(poblacion_2['ENTIDAD'] == 'República Mexicana' )]
+meses = semaforo.columns[10:22]
+
+semaforo2 = semaforo.replace(to_replace = 'Veracruz de Ignacio de la Llave', value = 'Veracruz')\
+    .groupby(['anio', 'entidad','delito_semaforo'])[meses].sum()\
+    .sum(axis = 1)\
+    .to_frame()\
+    .reset_index()
+    
+
+semaforo2.rename(columns = {0:'incidentes'}, inplace = True)
+gdf.replace({'Veracruz de Ignacio de la Llave':'Veracruz'}, inplace = True)
+set(gdf['NOM_ENT']) == set(semaforo2['entidad'])
+poblacion_2.ENTIDAD.replace({'Michoacán':'Michoacán de Ocampo','Coahuila':'Coahuila de Zaragoza'}, inplace = True)
+set(semaforo2['entidad']) == set(poblacion_2.ENTIDAD)
+
+geometrias = pd.merge(poblacion_2, gdf, left_on = 'ENTIDAD', right_on = 'NOM_ENT', how = 'outer')\
+    .drop(columns = ['CVE_ENT', 'NOM_ENT'])
+
+geometrias = geometrias.merge(semaforo2, left_on = 'ENTIDAD', right_on = 'entidad', how = 'left')\
+    .drop(columns  = ['AÑO', 'ENTIDAD'])\
+    .rename(columns = {'POBLACION':'poblacion'})\
+    [['anio', 'entidad', 'geometry', 'poblacion', 'delito_semaforo', 'incidentes']] #ordenar de una vez
+geometrias['incidentes_per_10000_hab'] = 100000 * geometrias['incidentes'] / geometrias['poblacion']
+
+#lo pasamos a geopandas porque se perdio
+geometrias = gpd.GeoDataFrame(geometrias)
+
+
+# =======================================================================
+# Graficar
+# =======================================================================
+def graficar_mapa(delito, año = 2022):
+    fig, ax = plt.subplots(1,1, figsize = (10,10), dpi = 200)
+    
+    vista = geometrias[(geometrias['delito_semaforo'] == delito) & (geometrias['anio'] == año)]
+    
+    vista.plot(column = 'incidentes_per_10000_hab', 
+               scheme = 'quantiles', 
+               k = 3, 
+               legend=True, 
+               cmap='Reds', 
+               ax = ax,
+               edgecolor='black', 
+               linewidth=0.3) 
+
+    leg = ax.get_legend()
+    leg.set_title("Incidentes cada 10,000 habitantes")
+    ax.set_title(delito)
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
+    ax.set_facecolor('grey')
+    
+
+widgets.interact(graficar_mapa, delito = geometrias.delito_semaforo.unique(), año = range(2015, 2023));

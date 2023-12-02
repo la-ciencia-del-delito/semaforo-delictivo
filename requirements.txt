@@ -13,3 +13,4 @@ pandas-profiling
 category_encoders
 ipympl
 openpyxl
+streamlit
