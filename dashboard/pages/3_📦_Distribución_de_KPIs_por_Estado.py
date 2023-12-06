@@ -20,7 +20,7 @@ def graficar_boxplots_metrica(metrica):
     st.plotly_chart(fig)
 
 
-with open("pages_config.yaml", "r",encoding="utf8") as f:
+with open("dashboard/pages_config.yaml", "r",encoding="utf8") as f:
     config_paginas = yaml.safe_load(f)
 
 nombre_pagina = "pagina_3"
@@ -39,7 +39,7 @@ st.markdown("# Distribución de las tasas por Estado")
 # Cargar datos
 # ===================================================================
 ruta_actual = Path(os.getcwd())
-ruta_data = ruta_actual / "data_dashboard"
+ruta_data = ruta_actual / "dashboard/data_dashboard"
 
 df_tidy = pd.read_csv(ruta_data / "tidy_final_combinado.csv")
 # Quitamos columnas que no son de interés para esta sección

@@ -286,7 +286,7 @@ def dashboard_vis(entidad, anho):
     st.pyplot(fig)
 
 
-with open("pages_config.yaml", "r",encoding="utf8") as f:
+with open("dashboard/pages_config.yaml", "r",encoding="utf8") as f:
     config_paginas = yaml.safe_load(f)
 
 nombre_pagina = "principal"
@@ -309,7 +309,7 @@ st.write(
 # Cargar datos
 # ===================================================================
 ruta_actual = Path(os.getcwd())
-ruta_data = ruta_actual / "data_dashboard"
+ruta_data = ruta_actual / "dashboard/data_dashboard"
 
 df_tidy = pd.read_csv(ruta_data / "tidy_final_combinado.csv")
 

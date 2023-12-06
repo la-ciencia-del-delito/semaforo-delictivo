@@ -67,7 +67,7 @@ def graficar_mapa(anio):
     st.plotly_chart(fig)
 
 
-with open("pages_config.yaml", "r",encoding="utf8") as f:
+with open("dashboard/pages_config.yaml", "r",encoding="utf8") as f:
     config_paginas = yaml.safe_load(f)
 
 nombre_pagina = "pagina_1"
@@ -92,7 +92,7 @@ st.write(
 # Cargar datos
 # ===================================================================
 ruta_actual = Path(os.getcwd())
-ruta_data = ruta_actual / "data_dashboard"
+ruta_data = ruta_actual / "dashboard/data_dashboard"
 
 kpi = pd.read_csv(ruta_data / "tidy_final_combinado.csv")
 

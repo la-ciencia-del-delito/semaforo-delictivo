@@ -23,7 +23,7 @@ def graficar(delito):
     st.plotly_chart(fig)
 
 
-with open("pages_config.yaml", "r",encoding="utf8") as f:
+with open("dashboard/pages_config.yaml", "r",encoding="utf8") as f:
     config_paginas = yaml.safe_load(f)
 
 nombre_pagina = "pagina_4"
@@ -48,7 +48,7 @@ Evolución de los delitos desde el 2015 a la fecha
 # Cargar datos
 # ===================================================================
 ruta_actual = Path(os.getcwd())
-ruta_data = ruta_actual / "data_dashboard"
+ruta_data = ruta_actual / "dashboard/data_dashboard"
 
 series_delitos_filtrables = pd.read_csv(ruta_data / "serie_tiempo_tidy.csv")
 series_delitos_filtrables.set_index("fecha", inplace=True)

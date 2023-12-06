@@ -1,7 +1,7 @@
 import streamlit as st
 import yaml
 
-with open("pages_config.yaml", "r",encoding="utf8") as f:
+with open("dashboard/pages_config.yaml", "r",encoding="utf8") as f:
     config_paginas = yaml.safe_load(f)
 
 nombre_pagina = "pagina_5"
