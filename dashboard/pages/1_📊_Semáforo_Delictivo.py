@@ -66,6 +66,13 @@ def crear_recuadro(ax, x, y, width, height, texto, texto_grande, color_borde, co
             # palette=palette,
             ha='center', va='center', fontsize=10)
 
+
+
+def calcular_deltas_estado(estado: pd.DataFrame):
+    for col in ("KPI_IIC", "PERCEPCION", "TASA_DELICTIVA", "POBLACION"):
+        estado[f"delta_{col}"] = (estado[col]-estado[col].shift()).fillna(0)
+
+
 def crear_banner(valor_kpi, valor_percepcion, valor_tasa, valor_poblacion):
     # Crear una figura y ejes
     fig, ax = plt.subplots(figsize=(14, 1))
@@ -100,6 +107,7 @@ palette_sns = sns.color_palette(palette)
 sns.set_palette(palette_sns)
 def dashboard_vis(entidad, anho):
     set_entidad = df_tidy[df_tidy["ENTIDAD"] == entidad]
+    calcular_deltas_estado(set_entidad)
     set_entidad_anho = df_tidy[(df_tidy["ENTIDAD"] == entidad) & (df_tidy["AÑO"] == anho)]
     
     set_nacional = df_tidy.loc[df_tidy["CVE_GEO"] != 0, ["KPI_IIC", "PERCEPCION", "TASA_DELICTIVA"]]
@@ -112,10 +120,40 @@ def dashboard_vis(entidad, anho):
     v_percepcion = set_entidad_anho["PERCEPCION"].iloc[0]
     v_tasa = set_entidad_anho["TASA_DELICTIVA"].iloc[0]
     v_poblacion = set_entidad_anho["POBLACION"].iloc[0]
-
+ 
     # Intentemos crear el Banner...
-    crear_banner(v_kpi, v_percepcion, v_tasa, v_poblacion)
+    # crear_banner(v_kpi, v_percepcion, v_tasa, v_poblacion)
+ 
+    # st.write(set_entidad_anho.head())
+    
 
+    with open("./pages/style.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    _, col1, col2, col3, col4 = st.columns(5)
+    col1.metric(
+        label="KPI - ICC 🔍", 
+        value=f"{v_kpi}",
+        delta=f'{set_entidad.query(f"AÑO == {anho}")["delta_KPI_IIC"].iloc[0]:.2f}',
+        delta_color="inverse",
+    )
+    col2.metric(
+        label="Encuesta (INEGI) 📝", 
+        value=f"{v_percepcion}",
+        delta=f'{set_entidad.query(f"AÑO == {anho}")["delta_PERCEPCION"].iloc[0]:.2f}',
+        delta_color="inverse",
+    )
+    col3.metric(
+        label="Tasa delictiva 👨‍⚖️", 
+        value=f"{v_tasa}",
+        delta=f'{set_entidad.query(f"AÑO == {anho}")["delta_TASA_DELICTIVA"].iloc[0]:.2f}',
+        delta_color="inverse",
+    )
+    col4.metric(
+        label="Población 👩‍👩‍👧‍👦", 
+        value=f"{v_poblacion:,}",
+        delta=f'{int(set_entidad.query(f"AÑO == {anho}")["delta_POBLACION"].iloc[0]):,}',
+        # delta_color="off",
+    )
     #fig, axes = plt.subplots(nrows = 3, ncols = 3, figsize=(15, 12))
 
 # Crear una figura y ejes usando GridSpec de Matplotlib
@@ -128,10 +166,10 @@ def dashboard_vis(entidad, anho):
     # Gráfico No. 1.
     ax1 = fig.add_subplot(grid[0, 0])
     sns.lineplot(data = set_entidad, x= "AÑO", y = "KPI_IIC", ax = ax1)
-    ax1.set(title = "KPI - Índide de Inseguridad Ciudadana",
+    ax1.set(title = "KPI - Índice de Inseguridad Ciudadana",
                    ylabel = "KPI - IIC",
                    xlabel = "Años",
-                   xticks = anhos,
+                   xticks = anios,
                    xlim=(2015,2023)
                    )
     ax1.axhline(y=mediana_iic, linestyle=":", color="red", label="Referencia")
@@ -143,7 +181,7 @@ def dashboard_vis(entidad, anho):
     ax2.set(title = "Percepción de inseguridad (INEGI)",
                    ylabel = "Percepción (INEGI)",
                    xlabel = "Años",
-                   xticks = anhos,
+                   xticks = anios,
                    xlim=(2015,2023)                   
                    )
     ax2.axhline(y=mediana_inegi, linestyle=":", color="red", label="Referencia")
@@ -155,7 +193,7 @@ def dashboard_vis(entidad, anho):
     ax3.set(title = "Tasa delictiva según semáforo actual",
                    ylabel = "Tasa delictiva",
                    xlabel = "Años",
-                   xticks = anhos,
+                   xticks = anios,
                    xlim=(2015,2023)
                    )
     ax3.axhline(y=mediana_tasa, linestyle=":", color="red", label="Referencia")
@@ -209,7 +247,10 @@ def dashboard_vis(entidad, anho):
     delitos = delitos_dict_df(celda_delitos)
     
     ax5 = fig.add_subplot(grid[1, 1:3])
-    sns.barplot(data = delitos, x = "DELITOS", y = "INCIDENCIA", ax = ax5, palette=palette_sns)
+    sns.barplot(data = delitos, x = "DELITOS", y = "INCIDENCIA", ax = ax5, 
+                # palette=palette_sns,
+                color="brown",
+                )
     ax5.tick_params(axis='x', rotation=45)
     ax5.set(title = f"Distribución de delitos: {entidad} - Año {anho}",
                    ylabel = "",
@@ -269,11 +310,11 @@ df_tidy = pd.read_csv(ruta_tidy / "tidy_final_combinado.csv")
 
 claves = df_tidy["CVE_GEO"].unique()
 entidades = df_tidy["ENTIDAD"].unique()
-anhos = df_tidy["AÑO"].unique()
+anios = df_tidy["AÑO"].unique()
 
-columns = st.columns(3)
+columns = st.columns(2)
 
 entidad_seleccionada = columns[0].selectbox("Entidad", entidades)
-anio_seleccionado = columns[1].selectbox("Año", anhos)
+anio_seleccionado = columns[1].selectbox("Año", anios, index=len(anios)-1)
 
 dashboard_vis(entidad_seleccionada, anio_seleccionado)

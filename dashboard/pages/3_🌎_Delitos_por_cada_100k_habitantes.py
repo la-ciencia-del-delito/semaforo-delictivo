@@ -45,7 +45,7 @@ def graficar_mapa(anio, delito):
     color_continuous_scale="reds",
     range_color=(vista["incidentes_per_10000_hab"].min(),
                     vista["incidentes_per_10000_hab"].max()),
-                    width=1000, height=500
+    width=1000, height=500
     )
 
     fig.update_layout(
@@ -54,12 +54,18 @@ def graficar_mapa(anio, delito):
         # paper_bgcolor="black",
         margin=dict(l=0, r=0, t=0, b=0)
     )
+    fig.update_layout(
+        coloraxis_colorbar=dict(
+            tickmode='array', 
+            title="Incidentes por cada 10k hab.",
+        )
+    )
 
     # Template para la carta del hover
     salto = "<br>"
     hovertemp = "<b>Estado: </b>"
     hovertemp += "%{location}" + salto
-    hovertemp += "<b>Incidentes por cada 10k habitantes: </b>"
+    hovertemp += "<b>Incidentes por cada 10k hab: </b>"
     hovertemp += vista["incidentes_per_10000_hab"].astype(int).astype(str) + salto
 
     fig.update_traces(

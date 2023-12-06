@@ -65,11 +65,6 @@ palette = [
     "#ee5733",
     "#a10024",
     "#570119",
-
-    # "rgb(254,224,210)",
-    # "rgb(252,146,114)",
-    # "rgb(239,59,44)",
-    # "rgb(255,0,0)",
 ]
 def graficar_mapa(anio):
     vista = kpi[kpi['AÑO'] == anio]
@@ -79,15 +74,24 @@ def graficar_mapa(anio):
     locations=vista['ENTIDAD'], # nombre de la columna del Dataframe
     featureidkey='properties.name',  # ruta al campo del archivo GeoJSON con el que se hará la relación (nombre de los estados)
     color=vista['KPI_IIC_Color'], #El color depende de las cantidades
-    # color_discrete_map=colors,
-    # color_discrete_sequence=palette,
-    color_continuous_scale=palette,
-    # color_discrete_map=color_map,
+    color_continuous_scale=[
+        (0.0, palette[0]), (0.25, palette[0]),
+        (0.25, palette[1]), (0.50, palette[1]),
+        (0.5, palette[2]), (0.75, palette[2]),
+        (0.75, palette[3]), (1.00, palette[3]),
+    ],
+    color_continuous_midpoint=None,
     range_color=[1,4],
-    # range_color=(vista["KPI_IIC_Color"].min(),
-    #                 vista["KPI_IIC_Color"].max()),
-                    width=1000, height=500
+    width=1000, height=500
     )
+    fig.update_layout(
+        coloraxis_colorbar=dict(
+            tickmode='array', 
+            tickvals=[1, 2, 3, 4],
+            title="Nivel de IIC",
+        )
+    )
+
 
     fig.update_layout(
         dragmode=False, # Hacemos que no se pueda arrastrar el mapa
@@ -100,7 +104,7 @@ def graficar_mapa(anio):
     salto = "<br>"
     hovertemp = "<b>Estado: </b>"
     hovertemp += "%{location}" + salto
-    hovertemp += "<b>ïndice de Inseguridad Ciudadana: </b>"
+    hovertemp += "<b>IIC: </b>"
     hovertemp += kpi["KPI_IIC"].astype(str) + salto
 
     fig.update_traces(

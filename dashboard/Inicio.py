@@ -3,6 +3,7 @@ import streamlit as st
 st.set_page_config(
     page_title="Semáforo Delictivo | Inicio",
     page_icon="👮‍♂️",
+    # layout="wide",
 )
 
 st.write("# Semáforo Delictivo 🕵️‍♀️👮‍♂️⚖️")
@@ -35,8 +36,15 @@ Los delitos abordados en el semáforo son los siguientes:
 - Violencia familiar.
 - Feminicidio.
 
-La significación de los colores en el semáforo delictivo gira básicamente en torno al parámetro de la media para cada delito ya sea a nivel de entidad federativa o país.
-Los valores que se encuentran por encima de la media se representan con el <font color='red'>Rojo</font>, los valores entre la meta y la media en <span style="color:yellow">Amarillo</span> y los valores por debajo de la meta se representan en <span style="color:green">Verde</span>.
+La significación de los colores en el semáforo delictivo gira básicamente 
+            en torno al parámetro de la media para cada delito 
+            ya sea a nivel de entidad federativa o país.
+Los valores que se encuentran por encima de la media se representan
+             con el ${\color{red}rojo}$, 
+            los valores entre la meta y la media en 
+            ${\color{#FCD12A}amarillo}$
+            y los valores por debajo de la meta se representan 
+            en ${\color{#59b300}verde}$.
 
 ${\color{red}Rojo}$
 
@@ -46,7 +54,7 @@ ${\color{red}Rojo}$
 
 * Media
 
-${\color{yellow}Amarillo}$
+${\color{#FCD12A}Amarillo}$
 
 * Meta = Media - (Media / 2).
 
@@ -90,12 +98,20 @@ Luego, las tasas específicas de cada delito se encuentran calculadas según pob
 $TI_1 * 0.6$
 
 Desglosando:
+""")
 
-$(\frac{cantidad \hspace{2pt} de \hspace{2pt} Feminicidios}{población \hspace{2pt} total} * 100 \hspace{2pt} 000 habitantes) * (\frac{años \hspace{2pt} de \hspace{2pt} sanción \hspace{2pt} máxima \hspace{2pt} del \hspace{2pt} Feminicidio \hspace{2pt} según \hspace{2pt} código \hspace{2pt} penal}{100})$
+st.markdown(r'''
+$\left(\frac{cantidad \ de \ Feminicidios}{población \ total}\right)
+    * 100 \ 000 \ habitantes
+    * 
+\left(\frac{años \ de \ sanción \ máxima \ del \ Feminicidio \ según \ código \ penal}{100}\right)
+    $''')
 
+st.markdown(
+r"""
 Luego:
 
-$\frac{100 \hspace{2pt} 000 \hspace{2pt} habitantes}{100}= 1000 \hspace{2pt} habitantes$
+$\frac{100 \ 000 \ habitantes}{100}= 1000 \ habitantes$
 
 Quedando entonces la unidad de medida fijada en: años de sanción  máxima por cada 1000 habitantes.
 
@@ -103,9 +119,7 @@ Luego se definirán los rangos o categorías de sus valores en conversaciones po
 
 Finalmente se verificarán resultados con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/). Para de esta forma chequear el comportamiento del KPI durante el período de 2015 a 2023. Y más adelante incluir además el Índice de marginalidad para establecer comparaciones.
 
-3. Se propone el uso de un icono nuevo ícono para señalizar los delitos que se encuentran fuera de control.
-  
-![Fuera_de_control](./assets/Red_Arrow.jpg)
+3. Se propone el uso de un cuarto color (rojo más intenso) para señalizar los delitos que se encuentran fuera de control.
   
 4. Se propone el uso alternativo de los datos de la CONAPO, además de los datos que de la INEGI que ya usa el Semáforo en su versión actual.
 Se identifica como una de las limitaciones del semáforo el hecho de que contempla solo los datos de población censal del año 2020 lo cual pudiera provocar una interpretación menos precisa de la situación delectiva en el país.
