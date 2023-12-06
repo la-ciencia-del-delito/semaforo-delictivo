@@ -9,7 +9,7 @@
 ### ¿Que tema vamos a contar?
 Caracterizar la situación delictiva de México desde el 2015 a la fecha a partir de los datos de incidencia delictiva del gobierno de México, la encuesta de inseguridad del INEGI y las proyecciones de población de la CONAPO. Delimitándonos a los delitos del fuero común (contemplados por el actual semáforo).
 
-### Porque le debe de interesar a la audiencia
+### ¿Por qué le debe de interesar a la audiencia?
 * Conocer el contexto delictivo nacional.
 * Se relacionan los datos de incidencia delictiva con la encuesta de percepción de inseguridad y las proyecciones de población de CONAPO.
 * Se determina la situación delictiva actual a través del análisis de datos y de un nuevo KPI propuesto.
@@ -24,6 +24,6 @@ Caracterizar la situación delictiva de México desde el 2015 a la fecha a parti
 
 
 ## Relación de los datos  con la historia
-Se quiere contar la historia de un nuevo KPI que relaciona los datos de incidencia delictiva acotado a los delitos contemplados por el semáforo delictivo, con las proyecciones de población de CONAPO (lo que permite tener una estimación más precisa) y a su vez con la encuesta de percepción de inseguridad pública en mayores de 18 años (INEGI). Esto ayudaría a validar el KPI propuesto debido a que se encontró relación en los gráficos de comportamiento. Delimitándonos en tiempo al año de inicio del semáforo (2015) y a su vez a los delitos que contempla el actual semáforo delictivo.
+Se quiere contar la historia de un nuevo KPI que relaciona los datos de incidencia delictiva, acotado a los delitos contemplados por el semáforo delictivo; con las proyecciones de población de CONAPO (lo que permite tener una estimación más precisa) y a su vez con la encuesta de percepción de inseguridad pública en mayores de 18 años (INEGI). Esto ayudaría a validar el KPI propuesto debido a que se encontró relación en los gráficos de comportamiento. Delimitándonos en tiempo al año de inicio del semáforo (2015) y a su vez a los delitos que contempla el actual semáforo delictivo.
 
-Asimismo, se pretende ofrecer una visión del estado actual de cada entidad, proporcionando un recorrido por su historial en años anteriores. Este enfoque permitirá discernir si las medidas implementadas están generando mejoras reales en términos de seguridad o si, por el contrario, se observa una tendencia preocupante. Este análisis temporal se presenta como una herramienta esencial para comprender la dinámica delictiva actual y orientar estrategias más efectivas para la seguridad pública.
+Asimismo, se pretende ofrecer una visión del estado actual de cada entidad, proporcionando un recorrido por su historial en años anteriores. Este enfoque permitirá discernir si las medidas implementadas están generando mejoras reales, en términos de seguridad, o si por el contrario se observa una tendencia preocupante. Este análisis temporal se presenta como una herramienta esencial para comprender la dinámica delictiva actual y orientar estrategias más efectivas para la seguridad pública.

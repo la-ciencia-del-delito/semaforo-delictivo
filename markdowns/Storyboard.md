@@ -1,22 +1,21 @@
 # Storyboard
 
-Hacia el año 2015, surgió el actual semáforo delictivo como un proyecto de metodología estadística con el objetivo de conseguir la semaforización de la incidencia delictiva en México.
+A partir del año 2009 se instrumenta en México una nueva presentación  en la agrupación de los delitos bajo un nuevo concepto estadístico. Hacia noviembre del 2010, la Dirección de Estadística Criminal del DF presenta un Marco teórico para la semaforización del nuevo Enfoque Estadístico. Y ya hacia el año 2015, surgió el actual semáforo delictivo como una metodología de rendición de cuentas, que evalúa el desempeño de las autoridades y de la incidencia delictiva. Su fin radica principalmente: en conocer el estado de los delitos de una manera sencilla y sobre todo, para que las autoridades puedan tomar mejores decisiones.
+
+Uno de los datos más usado 
 Como se sabe, los conteos de población en México se realizan cada 5 años (censo y conteo), lo cual provoca que el cálculo de las tasas no se actualicen junto con el cambio de población. Además, el utilizar la media hace susceptible a cambios bruscos al tener valores extremos en los años, lo que puede provocar que un cambio no se refleje adecuadamente. 
 Por ejemplo, un Estado con pocos delitos en el pasado puede continuar con el indicador positivo (verde) a pesar de que exista una gran cantidad de delitos en el presente. O un Estado con muchos delitos en el pasado puede continuar con un indicador negativo (rojo) a pesar de haber disminuido la incidencia delictiva en la actualidad.
 
 En este trabajo, se propone un Indicador Clave de Desempeño (KPI) que utiliza proyecciones de población de CONAPO y una fórmula diferente. Este KPI realiza una suma ponderada de tasas delictivas, dando mayor peso a delitos más graves como feminicidio, homicidio y secuestro, en contraste con otros menos graves como extorsión, violencia familiar y lesiones. La ponderación se establece según la gravedad de cada delito, ordenándolos según la cifra máxima de años de sanción del delito base.
 
-Además, hemos incorporado diversas visualizaciones diseñadas de manera intuitiva, de tal forma que la interpretación de la información en ellas no requiere más que observar los elementos presentes. Estas herramientas visuales proporcionan a la audiencia una comprensión clara y accesible de los datos de delitos definidos por el gobierno, contribuyendo así a una interpretación más informada del estado actual de seguridad y delincuencia en nuestro país.
+Además, se han incorporado diversas visualizaciones diseñadas de manera intuitiva, de tal forma que la interpretación de la información en ellas no requiere más que observar los elementos presentes. Estas herramientas visuales proporcionan a la audiencia una comprensión clara y accesible de los datos de delitos definidos por el gobierno, contribuyendo así a una interpretación más informada del estado actual de seguridad y delincuencia en México.
 
 ## Descubrimientos
 1. No todos los delitos presentan un comportamiento uniforme a lo largo del tiempo; en términos generales, podemos distinguir dos categorías. Por un lado, están los delitos estacionarios, aquellos que permanecen estáticos alrededor de una media, lo que dificulta prever su evolución, ya que no se ven afectados por acciones o cambios sociales a lo largo de los años. Un ejemplo representativo de delitos estacionarios son los secuestros en Jalisco, que mantienen una media constante de 1.5 incidentes a lo largo del periodo estudiado.
 
 2. Por otro lado, se encuentran los delitos no estacionarios, los cuales muestran tendencias temporales marcadas, indicando la influencia de factores que alteran su comportamiento. Estos cambios pueden deberse a acciones gubernamentales que generan una tendencia a la baja del delito o a modificaciones en el comportamiento de la población. Un ejemplo ilustrativo de esta categoría es el robo a casas en Aguascalientes, que mantuvo una media de 200 incidentes hasta mediados de 2016, experimentó una marcada tendencia al alza hasta finales de 2019, con una media de 275, y luego mostró una disminución constante hasta estabilizarse en 200.
 
-
 3. Al analizar los delitos más frecuentes por estado, se nota una alta presencia de violencia familiar, seguida de lesiones en todos ellos. Este patrón sugiere que la violencia doméstica puede ser un factor significativo en los niveles delictivos a nivel nacional, destacando la importancia de abordar esta problemática para reducir la incidencia delictiva en el país.
-
-
 
 4. Al explorar la modalidad de delitos, se destaca que en el caso de homicidios, la gran mayoría se llevan a cabo utilizando armas de fuego, sugiriendo la existencia de una población con un acceso significativo a este tipo de armamento. Al realizar una comparación entre distintas categorías de delitos, como homicidios, feminicidios y lesiones, se revela que la modalidad más recurrente es "Con otro elemento". Este hallazgo señala una cierta ambigüedad en la ejecución de los delitos y destaca la necesidad de abordar de manera específica esta categoría para comprender mejor las circunstancias que rodean los actos delictivos y, en consecuencia, desarrollar estrategias más efectivas de prevención y control.
 
