@@ -297,6 +297,7 @@ icono_pagina = config_paginas[nombre_pagina]['icono']
 st.set_page_config(
     page_title=f"{titulo_compartido} | {titulo_pagina}",
     page_icon=f"{icono_pagina}",
+    layout="wide",
 )
 
 st.markdown("# Semáforo Delictivo")
