@@ -1,0 +1,26 @@
+titulo_compartido: Semáforo Delictivo
+
+# El titulo que se muestra en las pestañas del navegador
+principal:
+  titulo: Página principal
+  icono: 📊
+
+pagina_1:
+  titulo: Índice de Inseguridad Ciudadana
+  icono: 🌍
+
+pagina_2:
+  titulo: Mapa de delitos por cada 100k habitantes
+  icono: 🌎
+
+pagina_3:
+  titulo: Tasas por estado
+  icono: 📦
+
+pagina_4:
+  titulo: Evolución de los delitos en el tiempo
+  icono: 📈
+
+pagina_5:
+  titulo: Acerca del nuevo Índice
+  icono: 🔍

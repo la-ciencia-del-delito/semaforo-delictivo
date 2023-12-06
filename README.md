@@ -93,9 +93,9 @@ Luego se definirán los rangos o categorías de sus valores en conversaciones po
 Finalmente se verificarán resultados con datos procedentes de otras fuentes, tales como la "Percepción sobre seguridad pública" según datos de la [INEGI](https://www.inegi.org.mx/temas/percepcion/). Para de esta forma chequear el comportamiento del KPI durante el período de 2015 a 2023. Y más adelante incluir además el Índice de marginalidad para establecer comparaciones.
 
 3. Se propone el uso de un icono nuevo ícono para señalizar los delitos que se encuentran fuera de control.
-
-![Fuera_de_control](./notebooks/Red_Arrow.jpg)
-
+  
+![Fuera_de_control](./assets/Red_Arrow.jpg)
+  
 4. Se propone el uso alternativo de los datos de la CONAPO, además de los datos que de la INEGI que ya usa el Semáforo en su versión actual.
 Se identifica como una de las limitaciones del semáforo el hecho de que contempla solo los datos de población censal del año 2020 lo cual pudiera provocar una interpretación menos precisa de la situación delectiva en el país.
 Por ejemplo: en el 2020 la población de México era de unos 126 014 024 habitantes y ocurrieron unos 19620 homicidios, para una tasa acumulada del año de 15.6 por cada 100 000 habitantes.
@@ -129,4 +129,6 @@ https://drive.google.com/file/d/13TjyJ9RkR49o0eWTFvhNqazeL4maORYp/view
 https://www.inegi.org.mx/temas/percepcion/
 
 ### Libretas de Jupyter
-[URL.](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/notebooks)
+- [ETL](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/ETL)
+- [EDA](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/EDA)
+- [Dashboard](https://github.com/la-ciencia-del-delito/semaforo-delictivo/tree/main/dashboard)
