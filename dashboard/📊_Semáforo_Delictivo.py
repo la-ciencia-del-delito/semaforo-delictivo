@@ -1,5 +1,7 @@
+
 import os
 from pathlib import Path
+import yaml
 
 import numpy as np
 import pandas as pd
@@ -126,9 +128,6 @@ def dashboard_vis(entidad, anho):
  
     # st.write(set_entidad_anho.head())
     
-
-    with open("./pages/style.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     _, col1, col2, col3, col4 = st.columns(5)
     col1.metric(
         label="KPI - ICC 🔍", 
@@ -287,10 +286,17 @@ def dashboard_vis(entidad, anho):
     st.pyplot(fig)
 
 
+with open("pages_config.yaml", "r",encoding="utf8") as f:
+    config_paginas = yaml.safe_load(f)
+
+nombre_pagina = "principal"
+titulo_compartido = config_paginas['titulo_compartido']
+titulo_pagina = config_paginas[nombre_pagina]['titulo']
+icono_pagina = config_paginas[nombre_pagina]['icono']
+
 st.set_page_config(
-    page_title="Dashboard",
-    page_icon="📈",
-    layout="wide",
+    page_title=f"{titulo_compartido} | {titulo_pagina}",
+    page_icon=f"{icono_pagina}",
 )
 
 st.markdown("# Semáforo Delictivo")
@@ -303,10 +309,9 @@ st.write(
 # Cargar datos
 # ===================================================================
 ruta_actual = Path(os.getcwd())
-ruta_data = ruta_actual / "../data"
-ruta_tidy = ruta_data / "tidy"
+ruta_data = ruta_actual / "data_dashboard"
 
-df_tidy = pd.read_csv(ruta_tidy / "tidy_final_combinado.csv")
+df_tidy = pd.read_csv(ruta_data / "tidy_final_combinado.csv")
 
 claves = df_tidy["CVE_GEO"].unique()
 entidades = df_tidy["ENTIDAD"].unique()

@@ -5,32 +5,7 @@ from pathlib import Path
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
-st.set_page_config(
-    page_title="Semáforo Delictivo | Mapa",
-    page_icon="🌍",
-    layout="wide",
-)
-
-st.markdown("# Tasa de delitos por Estado")
-st.write(
-    """
-### Delitos cometidos por cada 10,000 habitantes
-"""
-)
-
-# ===================================================================
-# Cargar datos
-# ===================================================================
-ruta_actual = Path(os.getcwd())
-ruta_data = ruta_actual / "../data"
-ruta_tidy = ruta_data / "tidy"
-
-delitos_por_100k_hab = pd.read_csv(ruta_tidy / "delito_por_100k_hab.csv")
-
-
-with open(ruta_data / "mexico_regions.json") as file:
-    mexico_regions = json.load(file)
+import yaml
 
 
 def graficar_mapa(anio, delito):
@@ -66,7 +41,7 @@ def graficar_mapa(anio, delito):
     hovertemp = "<b>Estado: </b>"
     hovertemp += "%{location}" + salto
     hovertemp += "<b>Incidentes por cada 10k hab: </b>"
-    hovertemp += vista["incidentes_per_10000_hab"].astype(int).astype(str) + salto
+    hovertemp += vista["incidentes_per_10000_hab"].round(2).astype(str) + salto
 
     fig.update_traces(
         hovertemplate=hovertemp,
@@ -84,13 +59,47 @@ def graficar_mapa(anio, delito):
     # fig.show()
     st.plotly_chart(fig)
 
-columns = st.columns(3)
+
+
+with open("pages_config.yaml", "r",encoding="utf8") as f:
+    config_paginas = yaml.safe_load(f)
+
+nombre_pagina = "pagina_2"
+titulo_compartido = config_paginas['titulo_compartido']
+titulo_pagina = config_paginas[nombre_pagina]['titulo']
+icono_pagina = config_paginas[nombre_pagina]['icono']
+
+st.set_page_config(
+    page_title=f"{titulo_compartido} | {titulo_pagina}",
+    page_icon=f"{icono_pagina}",
+    layout="wide",
+)
+
+st.markdown("# Tasa de delitos por Estado")
+st.write(
+    """
+### Delitos cometidos por cada 10,000 habitantes
+"""
+)
+
+# ===================================================================
+# Cargar datos
+# ===================================================================
+ruta_actual = Path(os.getcwd())
+ruta_data = ruta_actual / "data_dashboard"
+
+delitos_por_100k_hab = pd.read_csv(ruta_data / "delito_por_100k_hab.csv")
+
+with open(ruta_data / "mexico_regions.json") as file:
+    mexico_regions = json.load(file)
+
+columns = st.columns(2)
 
 anios = delitos_por_100k_hab["anio"].unique()
 delitos = delitos_por_100k_hab["delito_semaforo"].unique()
 
 
-anio_seleccionado = columns[0].selectbox("Seleccionar año", anios)
+anio_seleccionado = columns[0].slider("Seleccionar año", 2015, 2023, step=1)
 delito_seleccionado = columns[1].selectbox("Tipo de delito", delitos)
 
 graficar_mapa(anio_seleccionado, delito_seleccionado)

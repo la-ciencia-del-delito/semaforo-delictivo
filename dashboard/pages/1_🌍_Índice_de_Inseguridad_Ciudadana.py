@@ -6,66 +6,9 @@ import numpy as np
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
-st.set_page_config(
-    page_title="Semáforo Delictivo | Índice de Inseguridad Ciudadana",
-    page_icon="🌍",
-    layout="wide",
-)
-
-st.markdown("# Índice de Inseguridad Ciudadana")
-st.write(
-    """
-### Índice de Inseguridad Ciudadana
-"""
-)
-
-# ===================================================================
-# Cargar datos
-# ===================================================================
-ruta_actual = Path(os.getcwd())
-ruta_data = ruta_actual / "../data"
-ruta_tidy = ruta_data / "tidy"
-
-kpi = pd.read_csv(ruta_tidy / "tidy_final_combinado.csv")
-
-# st.write(kpi.sample(3))
+import yaml
 
 
-with open(ruta_data / "mexico_regions.json") as file:
-    mexico_regions = json.load(file)
-
-
-colors = {
-        1: "rgb(252, 210, 186)",
-        2: "rgb(238, 87, 51)",
-        3: "rgb(237, 0, 53)",
-        4: "rgb(161, 0, 36)",
-    }
-
-colors = {
-        1: "Bajo",
-        2: "Moderado",
-        3: "Alto",
-        4: "Muy alto",
-    }
-
-color_map= {
-    "Bajo":"rgb(252, 210, 186)",
-        "Moderado": "rgb(238, 87, 51)",
-        "Alto": "rgb(237, 0, 53)",
-        "Muy alto": "rgb(161, 0, 36)",
-    }
-
-kpi["rgb"] = kpi.apply(lambda x: colors[x["KPI_IIC_Color"]], axis=1)
-
-palette = [
-    "#fcd2ba",
-    "#ef936d",
-    "#ee5733",
-    "#a10024",
-    "#570119",
-]
 def graficar_mapa(anio):
     vista = kpi[kpi['AÑO'] == anio]
     fig = px.choropleth(
@@ -122,6 +65,51 @@ def graficar_mapa(anio):
 
     # fig.show()
     st.plotly_chart(fig)
+
+
+with open("pages_config.yaml", "r",encoding="utf8") as f:
+    config_paginas = yaml.safe_load(f)
+
+nombre_pagina = "pagina_1"
+titulo_compartido = config_paginas['titulo_compartido']
+titulo_pagina = config_paginas[nombre_pagina]['titulo']
+icono_pagina = config_paginas[nombre_pagina]['icono']
+
+st.set_page_config(
+    page_title=f"{titulo_compartido} | {titulo_pagina}",
+    page_icon=f"{icono_pagina}",
+    layout="wide",
+)
+
+st.markdown("# Índice de Inseguridad Ciudadana")
+st.write(
+    """
+### Índice de Inseguridad Ciudadana de los Estados por año
+"""
+)
+
+# ===================================================================
+# Cargar datos
+# ===================================================================
+ruta_actual = Path(os.getcwd())
+ruta_data = ruta_actual / "data_dashboard"
+
+kpi = pd.read_csv(ruta_data / "tidy_final_combinado.csv")
+
+# st.write(kpi.sample(3))
+
+
+with open(ruta_data / "mexico_regions.json") as file:
+    mexico_regions = json.load(file)
+
+palette = [
+    "#fcd2ba",
+    "#ef936d",
+    "#ee5733",
+    "#a10024",
+    "#570119",
+]
+
 
 columns = st.columns(2)
 

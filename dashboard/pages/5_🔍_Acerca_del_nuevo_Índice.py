@@ -1,10 +1,19 @@
 import streamlit as st
+import yaml
+
+with open("pages_config.yaml", "r",encoding="utf8") as f:
+    config_paginas = yaml.safe_load(f)
+
+nombre_pagina = "pagina_5"
+titulo_compartido = config_paginas['titulo_compartido']
+titulo_pagina = config_paginas[nombre_pagina]['titulo']
+icono_pagina = config_paginas[nombre_pagina]['icono']
 
 st.set_page_config(
-    page_title="Semáforo Delictivo | Inicio",
-    page_icon="👮‍♂️",
-    # layout="wide",
+    page_title=f"{titulo_compartido} | {titulo_pagina}",
+    page_icon=f"{icono_pagina}",
 )
+
 
 st.write("# Semáforo Delictivo 🕵️‍♀️👮‍♂️⚖️")
 
