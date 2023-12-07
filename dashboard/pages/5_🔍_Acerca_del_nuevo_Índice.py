@@ -30,7 +30,7 @@ st.markdown("""
 La "Ciencia del Delito" es una organización creada con el objetivo de realizar un ejercicio docente en la MCD de la Universidad de Sonora. En el marco del ejercicio se realizarán propuestas y posiblemente aportes a la forma de visualizar los datos del Semáforo Delictivo, de realizar el análisis de los mismos y lograr una interpretación más precisa de la situación delictiva actual en México.
 
 ### Semáforo Delictivo
-El semáforo delictivo es un proyecto o metodología estadística creada para conseguir la semaforización de la incidencia delictiva en México. El mismo fue cuidadosamente consebido para implementar varios tipos de análisis y formas de visualizar la información de la estadística criminal.
+El semáforo delictivo es un proyecto o metodología estadística creada para conseguir la semaforización de la incidencia delictiva en México. El mismo fue cuidadosamente concebido para implementar varios tipos de análisis y formas de visualizar la información de la estadística criminal.
 Se abordan estadísticas sobre "delitos del fuero común" que se encuentran tipificados en el Código Penal del Estado. Los delitos del fuero común son los que afectan directamente a las personas en lo individual, estos se organizan por el tipo de bien jurídico afectado: la vida y la integridad corporal, la libertad personal, la libertad y la seguridad sexual, el patrimonio, la familia, la sociedad y otros. Los que se cometen con mayor frecuencia son Robo a personas y Robo a vehículos automotores, siendo delitos de alto impacto; el de Homicidio doloso y Feminicidio, entre otros.
 Los delitos abordados en el semáforo son los siguientes:
 - Homicidios.

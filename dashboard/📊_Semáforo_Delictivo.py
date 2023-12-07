@@ -245,10 +245,12 @@ def dashboard_vis(entidad, anho):
     celda_delitos = set_entidad_anho["DELITOS"].reset_index(drop = True).iloc[0]
     delitos = delitos_dict_df(celda_delitos)
     
+    orden = ["Feminicidio", "Homicidios", "Secuestros", "Robo a casa", "Robo a negocio", "Robo a vehículo", "Violación", "Narcomenudeo", "Extorsión", "Violencia familiar","Lesiones"]
     ax5 = fig.add_subplot(grid[1, 1:3])
     sns.barplot(data = delitos, x = "DELITOS", y = "INCIDENCIA", ax = ax5, 
                 # palette=palette_sns,
                 color="brown",
+                order=orden,
                 )
     ax5.tick_params(axis='x', rotation=45)
     ax5.set(title = f"Distribución de delitos: {entidad} - Año {anho}",
