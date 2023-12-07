@@ -4,7 +4,7 @@
 ## Definicion
 Se consideran los siguientes delitos, en el siguiente orden: feminicidio, homicidios, secuestros, robo a casa, robo a negocio, robo a vehiculo, violacion, narcomenudeo, extorsión, violencia familiar y lesiones.
 
-La fórmula para el Índice de Incidencia Delictiva (IIC) es la siguiente:
+La fórmula para el Índice de Inseguridad Ciudadana (IIC) es la siguiente:
 
 $IIC(\text{entidad}, \text{periodo}) = 0.6 \cdot TI_1  + 0.24 \cdot TI_2 + 0.1 \cdot TI_3  +  0.13\cdot TI_4  + 0.13\cdot TI_5$
 $+ 0.13\cdot TI_6  + 0.13\cdot TI_7 + 0.08\cdot TI_8  + 0.08\cdot TI_9 + 0.04\cdot TI_{10}  + 0.02\cdot TI_{11}.$
