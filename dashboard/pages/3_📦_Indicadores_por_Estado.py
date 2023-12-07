@@ -33,7 +33,7 @@ st.set_page_config(
     page_icon=f"{icono_pagina}",
     layout="wide",
 )
-st.markdown("# Distribución de las tasas por Estado")
+st.markdown("# Indicadores Estado")
 
 # ===================================================================
 # Cargar datos
@@ -59,6 +59,6 @@ df_tidy.rename(columns=nuevos_nombres, inplace=True)
 # st.write(df_tidy)
 
 columns = st.columns(2)
-metrica_seleccionada = columns[0].selectbox("Seleccionar métrica", metricas)
+metrica_seleccionada = columns[0].selectbox("Seleccionar indicador", metricas)
 
 graficar_boxplots_metrica(metrica_seleccionada)

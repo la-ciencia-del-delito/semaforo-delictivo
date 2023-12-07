@@ -165,7 +165,7 @@ def dashboard_vis(entidad, anho):
     # Gráfico No. 1.
     ax1 = fig.add_subplot(grid[0, 0])
     sns.lineplot(data = set_entidad, x= "AÑO", y = "KPI_IIC", ax = ax1)
-    ax1.set(title = "KPI - Índice de Inseguridad Ciudadana",
+    ax1.set(title = "Semáforo propuesto (IIC)",
                    ylabel = "KPI - IIC",
                    xlabel = "Años",
                    xticks = anios,
@@ -189,7 +189,7 @@ def dashboard_vis(entidad, anho):
     # Gráfico No. 3.
     ax3 = fig.add_subplot(grid[0, 2])
     sns.lineplot(data = set_entidad, x= "AÑO", y = "TASA_DELICTIVA", ax = ax3)
-    ax3.set(title = "Tasa delictiva según semáforo actual",
+    ax3.set(title = "Semáforo actual (PGJ)",
                    ylabel = "Tasa delictiva",
                    xlabel = "Años",
                    xticks = anios,
@@ -198,7 +198,38 @@ def dashboard_vis(entidad, anho):
     ax3.axhline(y=mediana_tasa, linestyle=":", color="red", label="Referencia")
     ax3.tick_params(axis='x', rotation=45)
 
-    # Gráfico No. 4.
+
+    # Gráfico No. 6.
+    ax4 = fig.add_subplot(grid[1, 0])
+    ax4 = sns.scatterplot(data = set_entidad, x = "PERCEPCION", y = "KPI_IIC", ax = ax4)
+    ax4 = sns.regplot(data = set_entidad, x = "PERCEPCION", y = "KPI_IIC", ax = ax4)
+    ax4.set(title = "Regresión lineal del KPI-IIC y percepción",
+            xlabel = "Percepción de inseguridad (INEGI)",
+            ylabel = "KPI - IIC",
+            )
+
+    # Gráfico No. 7.
+    ax5 = fig.add_subplot(grid[1, 1])
+    ax5 = sns.scatterplot(data = set_entidad, x = "CUM_DIFF", y = "KPI_IIC", ax = ax5)
+    ax5 = sns.regplot(data = set_entidad, x = "CUM_DIFF", y = "KPI_IIC", ax = ax5)
+    ax5.set(title = "Regresión KPI-IIC y diferencia acumulada",
+            xlabel = "Diferencia acumulada según grupos etarios",
+            ylabel = "KPI - IIC",
+            )
+    ax5.tick_params(axis='x', rotation=45)
+
+    # Gráfico No. 8.
+    ax6 = fig.add_subplot(grid[1,2])
+    ax6 = sns.scatterplot(data = set_entidad, x = "CUM_DIFF", y = "PERCEPCION", ax = ax6)
+    ax6 = sns.regplot(data = set_entidad, x = "CUM_DIFF", y = "PERCEPCION", ax = ax6)
+    ax6.set(title = "Regresión diferencia y percepción",
+       xlabel = "Diferencia acumulada según grupos etarios",
+       ylabel = "Percepción (INEGI)"
+       )
+
+
+
+    # Pirámide de edades =========================================================================
     # Preparación de los datos para la Pirámide...
     celda_piramide = set_entidad_anho["PIRAMIDE"].reset_index(drop = True).iloc[0]
     df_pob = pob_dict_df(celda_piramide)
@@ -220,15 +251,15 @@ def dashboard_vis(entidad, anho):
     
     # Graficando la Pirámide...
     #fig, ax = plt.subplots(figsize=(8, 7))
-    ax4 = fig.add_subplot(grid[1, 0])
+    ax7 = fig.add_subplot(grid[2, 0])
     bar_plot = sns.barplot(x='HOMBRES', y='GRUPO', data=df_pob, order=grupos_reverse, 
-                           orient='h',ax = ax4,
+                           orient='h',ax = ax7,
                            label="Hombres",
                         #    palette='PuBu'
                         color="#a10024"
                            )
     bar_plot = sns.barplot(x='MUJERES', y='GRUPO', data=df_pob, order=grupos_reverse, 
-                           orient='h', lw=0, ax = ax4,
+                           orient='h', lw=0, ax = ax7,
                            label="Mujeres",
                         #    palette='OrRd'
                         color="#fcd2ba"
@@ -239,51 +270,25 @@ def dashboard_vis(entidad, anho):
                 xticks=ticks,
                 xticklabels=labels
                 )
-    ax4.legend()
-    # Gráfico No. 5.
+    ax7.legend()
+
+    # Gráfico de barras de delitos =========================================================================
     # Preparando el df de delitos...
     celda_delitos = set_entidad_anho["DELITOS"].reset_index(drop = True).iloc[0]
     delitos = delitos_dict_df(celda_delitos)
     
     orden = ["Feminicidio", "Homicidios", "Secuestros", "Robo a casa", "Robo a negocio", "Robo a vehículo", "Violación", "Narcomenudeo", "Extorsión", "Violencia familiar","Lesiones"]
-    ax5 = fig.add_subplot(grid[1, 1:3])
-    sns.barplot(data = delitos, x = "DELITOS", y = "INCIDENCIA", ax = ax5, 
+    ax8 = fig.add_subplot(grid[2, 1:3])
+    sns.barplot(data = delitos, x = "DELITOS", y = "INCIDENCIA", ax = ax8, 
                 # palette=palette_sns,
                 color="brown",
                 order=orden,
                 )
-    ax5.tick_params(axis='x', rotation=45)
-    ax5.set(title = f"Distribución de delitos: {entidad} - Año {anho}",
+    ax8.tick_params(axis='x', rotation=45)
+    ax8.set(title = f"Distribución de delitos: {entidad} - Año {anho}",
                    ylabel = "",
                    xlabel = "",
                    )
-    # Gráfico No. 6.
-    ax6 = fig.add_subplot(grid[2, 0])
-    ax6 = sns.scatterplot(data = set_entidad, x = "PERCEPCION", y = "KPI_IIC", ax = ax6)
-    ax6 = sns.regplot(data = set_entidad, x = "PERCEPCION", y = "KPI_IIC", ax = ax6)
-    ax6.set(title = "Regresión lineal del KPI-IIC y percepción",
-            xlabel = "Percepción de inseguridad (INEGI)",
-            ylabel = "KPI - IIC",
-            )
-
-    # Gráfico No. 7.
-    ax7 = fig.add_subplot(grid[2, 1])
-    ax7 = sns.scatterplot(data = set_entidad, x = "CUM_DIFF", y = "KPI_IIC", ax = ax7)
-    ax7 = sns.regplot(data = set_entidad, x = "CUM_DIFF", y = "KPI_IIC", ax = ax7)
-    ax7.set(title = "Regresión KPI-IIC y diferencia acumulada",
-            xlabel = "Diferencia acumulada según grupos etarios",
-            ylabel = "KPI - IIC",
-            )
-    ax7.tick_params(axis='x', rotation=45)
-
-    # Gráfico No. 8.
-    ax8 = fig.add_subplot(grid[2,2])
-    ax8 = sns.scatterplot(data = set_entidad, x = "CUM_DIFF", y = "PERCEPCION", ax = ax8)
-    ax8 = sns.regplot(data = set_entidad, x = "CUM_DIFF", y = "PERCEPCION", ax = ax8)
-    ax8.set(title = "Regresión diferencia y percepción",
-       xlabel = "Diferencia acumulada según grupos etarios",
-       ylabel = "Percepción (INEGI)"
-       )
 
     st.pyplot(fig)
 

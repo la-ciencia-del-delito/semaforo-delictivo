@@ -11,6 +11,11 @@ import yaml
 def graficar_mapa(anio, delito):
     vista = delitos_por_100k_hab[(delitos_por_100k_hab['delito_semaforo'] == delito)\
                         & (delitos_por_100k_hab['anio'] == anio)]
+    
+    # Para fijar la escala de color de un delito
+    min = delitos_por_100k_hab[delitos_por_100k_hab['delito_semaforo'] == delito]['incidentes_per_10000_hab'].min()
+    max = delitos_por_100k_hab[delitos_por_100k_hab['delito_semaforo'] == delito]['incidentes_per_10000_hab'].max()
+
     fig = px.choropleth(
     data_frame=vista, 
     geojson=mexico_regions, 
@@ -18,8 +23,7 @@ def graficar_mapa(anio, delito):
     featureidkey='properties.name',  # ruta al campo del archivo GeoJSON con el que se hará la relación (nombre de los estados)
     color=vista['incidentes_per_10000_hab'], #El color depende de las cantidades
     color_continuous_scale="reds",
-    range_color=(vista["incidentes_per_10000_hab"].min(),
-                    vista["incidentes_per_10000_hab"].max()),
+    range_color=(min, max),
     width=1000, height=500
     )
 
